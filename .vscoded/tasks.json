@@ -1,0 +1,38 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "build active file",
+            "command": "g++",
+            "args": [
+                "-g", // include to add debugging support
+                "-O2",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "compiler: /usr/local/bin/g++-10"
+        },
+        {
+            "type": "cppbuild",
+            "label": "run active file",
+            "command": "${workspaceFolder}/build/${fileBasenameNoExtension}",
+            "args": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": "none",
+            "detail": "compiler: /usr/local/bin/g++-10"
+        }
+    ]
+}
