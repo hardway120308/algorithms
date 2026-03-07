@@ -2,24 +2,17 @@
 
 using namespace std;
 int answer = INT_MAX;
-int main()
-{
+int main() {
     int testcases;
     cin >> testcases;
-    while (testcases--)
-    {
+    while (testcases--) {
         int n;
         cin >> n;
-        if (n == 2)
-        {
+        if (n == 2) {
             cout << 2 << endl;
-        }
-        else if (n == 3)
-        {
+        } else if (n == 3) {
             cout << 3 << endl;
-        }
-        else
-        {
+        } else {
             cout << n % 2 << endl;
         }
     }

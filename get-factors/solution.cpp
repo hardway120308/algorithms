@@ -2,14 +2,11 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     int n;
     cin >> n;
-    for (int i = 2; i <= sqrt(n); i++)
-    {
-        while (n % i == 0)
-        {
+    for (int i = 2; i <= sqrt(n); i++) {
+        while (n % i == 0) {
             n /= i;
             cout << i << " ";
         }
