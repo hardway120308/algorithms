@@ -21,6 +21,7 @@ int main() {
             ans.push_back(i);
         }
     }
+    // 計算容器總和
     cout << accumulate(ans.begin(), ans.end(), 0) << endl;
     return 0;
 }

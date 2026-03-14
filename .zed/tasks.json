@@ -1,9 +1,8 @@
 [
-    {
-        "label": "run file",
-        "command": "sh ~/.config/zed/custom_runfile.sh",
-        "use_new_terminal": false,
-        "allow_concurrent_runs": false,
-        "reveal": "always"
-    }
+  {
+    "label": "Build & Run C++",
+    "command": "g++ $ZED_FILE  --output '$ZED_DIRNAME/$ZED_STEM.out' && \"$ZED_DIRNAME/$ZED_STEM.out\"",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+  },
 ]
