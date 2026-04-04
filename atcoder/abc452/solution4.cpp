@@ -12,14 +12,16 @@ int main() {
     int n = S.length();
     int m = T.length();
 
-    // nxt[i][c] 儲存字元 'c' 在索引 'i'（含）之後第一次出現的位置
+    // nxt[i][c] 儲存字元 'c' 在索引 'i'（含）之後第一次出現的位置(0-based)
     // 初始化為 'n'，表示找不到該字元
     vector<vector<int>> nxt(n + 1, vector<int>(26, n));
 
     for (int i = n - 1; i >= 0; --i) {
         for (int c = 0; c < 26; ++c) {
+            // 預先設定在i個位置之後最早出現c的位置 =  i右邊的位置之後最早出現c的位置
             nxt[i][c] = nxt[i + 1][c];
         }
+        // 更新在i個位置之後(含)最早出現S[i]這個字元的位置為i
         nxt[i][S[i] - 'a'] = i;
     }
 
