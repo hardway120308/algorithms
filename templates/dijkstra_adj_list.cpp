@@ -2,11 +2,13 @@
 #include <queue>
 #define int long long
 #define vi vector<int>
-#define arr2d vector<vector<int>>
+#define graph vector<map<int, int>>
 #define pii pair<int, int>
 using namespace std;
-const int INF = 1e10;
-vi dijkistra(int n, int source, arr2d g) {
+
+const int INF = 1e14;
+
+vi dijkistra(int n, int source, graph g) {
     vi dist(n + 1, INF);
     // PQ儲存key: 距離, val: 頂點編號
     // Min-Heap
@@ -17,20 +19,22 @@ vi dijkistra(int n, int source, arr2d g) {
     pq.push({0, source});
 
     while (not pq.empty()) {
-        pii u = pq.top();
+        auto [pq_dist, u] = pq.top();
         pq.pop();
 
-        if (u.first > dist[u.second])
+        // 已經有更好的解，則貪心不選它
+        if (pq_dist > dist[u])
             continue;
 
-        for (int v = 0; v < n; v++) {
+        // v：頂點編號, w：權重
+        for (auto [v, w] : g[u]) {
             // 如果聯通
-            int w = g[u.second][v];
             if (w == 0 or w == INF)
                 continue;
-            if (dist[v] > (dist[u.second] + w)) {
+            if (dist[v] > (dist[u] + w)) {
                 // 更新dist
-                dist[v] = dist[u.second] + w;
+                dist[v] = dist[u] + w;
+                // {距離,頂點編號}
                 pq.push({dist[v], v});
             }
         }
@@ -40,14 +44,15 @@ vi dijkistra(int n, int source, arr2d g) {
 signed main() {
     int n, m;
     cin >> n >> m;
-    arr2d g(n, vector<int>(n, INF));
+    graph g(n);
 
     for (int i = 0; i < m; i++) {
         int v1, v2, weight;
         cin >> v1 >> v2 >> weight;
         v1--;
         v2--;
-        g[v1][v2] = weight;
+        g[v1].insert({v2, weight});
+        g[v2].insert({v1, weight});
     }
 
     auto dist = dijkistra(n, 0, g);
