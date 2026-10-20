@@ -7,7 +7,7 @@ graph = ["."] * 25
 def can_place(i, choice):
     """
     只檢查放上去會不會違反規則，不放置
-    檢查graph而不是forbidden, 因爲forbidden會含有因爲旗子而被禁止的空格子
+    檢查graph而不是forbidden, 因爲forbidden會含有因爲棋子而被禁止的空格子
     """
     r = i // 5
     c = i % 5
