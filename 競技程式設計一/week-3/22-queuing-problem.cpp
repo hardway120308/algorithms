@@ -6,6 +6,10 @@ using namespace std;
 // splice(target_position, source_list, source_element_to_move)
 // splice(target_position, source_list)
 signed main() {
+    // io optimization
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
     int N, M;
     cin >> N >> M;
     vector<list<int>> Q(N + 1);

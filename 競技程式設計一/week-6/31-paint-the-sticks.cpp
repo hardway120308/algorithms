@@ -3,6 +3,9 @@
 using namespace std;
 #define int long long
 signed main() {
+    // io optimization
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
     int n;
     while (cin >> n) {
         int ans = 0;

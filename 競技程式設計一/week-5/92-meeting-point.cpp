@@ -40,5 +40,5 @@ signed main() {
         cin >> x[i] >> a[i] >> b[i];
         maxX = max(x[i], maxX);
     }
-    cout << tripleSearch(x, a, b, 0, maxX) << '\n';
+    cout << fixed << setprecision(6) << tripleSearch(x, a, b, 0, maxX) << '\n';
 }
