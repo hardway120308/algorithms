@@ -42,7 +42,8 @@ signed main() {
             // 將目前棒子的索引放入棧中，維持高度單調遞增
             stk.push(i);
         }
-        cout << ans << endl;
+        // endl會flush
+        cout << ans << '\n';
     }
 }
 // 索引：  0  1  2  3
