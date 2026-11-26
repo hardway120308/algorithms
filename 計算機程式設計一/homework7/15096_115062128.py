@@ -84,6 +84,7 @@ class Soldier:
         steps -= row_steps
 
         col_diff = target.col - self.col
+        # 弱step爲0則不動
         col_steps = min(abs(col_diff), steps)
 
         if col_diff > 0:
@@ -101,8 +102,7 @@ class Soldier:
         # TODO: Pick target, then attack or move (and attack if in range).
         target = self.find_target(enemies)
         if target:
-            res = self.move_toward(target)
-            if res:
+            if self.move_toward(target):
                 self.attack(target)
         else:
             return

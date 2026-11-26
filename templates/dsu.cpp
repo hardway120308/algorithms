@@ -2,24 +2,35 @@
 
 using namespace std;
 
-int parent[50000];
+// DSU
+struct DSU {
+    vector<int> p, sz;
 
-int find(int x) {
-    while (parent[x] != x) {
-        x = parent[x];
+    DSU(int n) {
+        p.resize(n + 1);
+        sz.assign(n + 1, 1);
+        iota(p.begin(), p.end(), 0);
     }
-    return x;
-}
 
-bool unite(int x, int y) {
-    int root1 = find(x);
-    int root2 = find(y);
-    parent[root1] = root2;
+    int find(int x) {
+        if (p[x] == x)
+            return x;
+        // 路徑壓縮
+        return p[x] = find(p[x]);
+    }
 
-    return true;
-}
+    void unite(int a, int b) {
+        a = find(a);
+        b = find(b);
 
-signed main() {
-    cout << "Hello World" << endl;
-    return 0;
-}
+        if (a == b)
+            return;
+
+        // Union by size
+        if (sz[a] < sz[b])
+            swap(a, b);
+
+        p[b] = a;
+        sz[a] += sz[b];
+    }
+};
